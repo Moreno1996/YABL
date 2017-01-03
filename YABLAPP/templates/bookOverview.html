@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+
+    {%block content%}
+    <div>
+
+
+     {%for single in Books%} {{single.title}} {% endfor%}
+     <div id="content">
+        <div class="row" id="questionBook">
+           <!--Image on the left side -->
+
+        </div>
+     </div>
+  </div>
+
+      <script src="https://www.googleapis.com/books/v1/volumes?q=harry+potter&langRestrict=en&callback=handleResponse&key=AIzaSyDpMcDi_iSCJSeSb3GRZkbfa1LJnL8W6JE&maxResults=3&projection=full"></script>
+        {%endblock %}
