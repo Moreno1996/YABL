@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+
+    {%block content%}
+    <div class="container">
+
+
+     <div class="row">
+       <h1>New search</h1>
+       <form method="get" action="/search/" class="navbar-form pull-right">
+       <input type="text" id="searchBox" class="input-medium search-query" name="q" placeholder="Author, Title or ISBN">
+       <input type="submit" class="btn" value="Search" >
+       </form>
+</div></div>
+
+
+        {%endblock %}

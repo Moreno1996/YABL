@@ -1,0 +1,72 @@
+
+
+{% extends 'base.html'%}
+
+
+    {%block content%}
+    <div class="container">
+      {%if alert %}
+      <div class="alert alert-warning">
+  <strong>Warning!</strong> {{alert}}
+</div>
+{%endif%}
+
+{%if success %}
+<div class="alert alert-success">
+<strong>Success!</strong> {{success}}
+</div>
+{%endif%}
+      <div class="row book_info">
+
+                 <div class="col-md-6">
+                     <img class="img-responsive img-single" src="{{book.image_link}}" alt="">
+                 </div>
+
+                 <div class="col-md-6 ">
+                     <h3>{{book.title}}-{{book.author}}</h3>
+                     <p>{{book.decription}}</p>
+                     <h3>Book Specs</h3>
+                     <ul>
+                         <li>Rating Bol.com: {{book.rating}}</li>
+                          {% if  book.grading.grade != None %}
+                         <li>Rating Readers: {{ book.grading.grade|floatformat:"0"}}</li>
+                         {% endif%}
+                         <li>Came out in: {{book.year}}</li>
+                         <li>ISBN: {{book.isbn}}</li>
+                     </ul>
+                     {% if  book.grading != None %}
+                     <ul>
+                         <li>Predictable: {{book.grading.vsbh|floatformat:"0"}} out of 10</li>
+                         <li>Romantic: {{book.grading.roman|floatformat:"0"}}</li>
+                         <li>Positive: {{book.grading.pos|floatformat:"0"}}</li>
+                         <li>Realistic: {{book.grading.real|floatformat:"0"}}</li>
+                         <li>Pyschological: {{book.grading.span|floatformat:"0"}}</li>
+
+                     </ul>
+                     {%endif%}
+                     <a href="{% url 'grade_single' pk=book.pk %}">Grade!</a>
+                      <a href="{% url 'add_book' pk=book.pk x=0 %}">Add book to favourites!</a>
+                       <a href="{% url 'add_book' pk=book.pk x=1 %}">Add book to "Read List"!</a>
+                 </div>
+
+             </div>
+             <div class="row related">
+
+<div class="col-lg-12">
+    <h3 class="page-header">Recommended Books</h3>
+</div>
+<br/>
+{%for single in recom%}
+
+<div class="col-sm-3 col-xs-6 ">
+    <a href="{% url 'book_detail' pk=single.pk %}">
+        <img class="img-responsive portfolio-item img-related" src="{{single.image_link}}" alt="">
+    </a>
+    <i>{{single.title}}</i><br/>
+    <b>{{single.author}}</b>
+</div>
+{% endfor%}
+        </div>
+
+
+    {%endblock %}

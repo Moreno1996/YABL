@@ -1,0 +1,51 @@
+
+
+{% extends 'base.html'%}
+
+
+    {%block content%}
+    <div class="container">
+      {%if message %}
+      <div class="alert alert-success">
+      Welcome <strong>{{message}}</strong>!
+      </div>
+      {%endif%}
+     <div class="row">
+       <h1>Newest Books</h1>
+       {% if  Books != None %}
+         {%for single in Books%}
+            <div class="col-md-3 col-xs-6 thumb">
+                 <a class="thumbnail " href="{% url 'book_detail' pk=single.pk %}">
+                     <img class="img-responsive img-gallery " src="{{single.image_link}}" alt="">
+                 </a>
+                               </div>
+
+  {% endfor%}
+  {%endif%}
+  {% if  Books == None %}
+
+<h3>Unfortunately no books where found</h3>
+  {%endif%}
+  </div>
+  <div class="row">
+    <h1>Best Rated Books</h1>
+    {% if  best != None %}
+      {%for single in best%}
+          <div class="col-md-3 col-xs-6 thumb">
+              <a class="thumbnail " href="{% url 'book_detail' pk=single.pk %}">
+                  <img class="img-responsive img-gallery " src="{{single.image_link}}" alt="">
+              </a>
+                            </div>
+
+{% endfor%}
+{%endif%}
+{% if  best == None %}
+
+<h3>Unfortunately no books where found</h3>
+{%endif%}
+</div>
+
+
+
+</div>
+    {%endblock %}

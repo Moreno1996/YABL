@@ -1,0 +1,86 @@
+
+
+{% extends 'base.html'%}
+
+
+    {%block content%}
+    <div class="container">
+
+
+     <div class="row">
+       <div class="row">
+
+                  <div class="col-md-6 col-sm-4 col-xs-12">
+                      <img class="img-responsive img-single" src="{{book.image_link}}" alt="">
+                  </div>
+
+                  <div class="col-md-6 col-sm-8 col-xs-12">
+                      <h3>{{book.title}}-{{book.author}}</h3>
+                      <p>{{book.decription}}</p>
+                      <h3>Book Specs</h3>
+                      <ul>
+                          <li>Rating: {{book.rating}}</li>
+                          <li>Came out in: {{book.year}}</li>
+                          <li>ISBN: {{book.isbn}}</li>
+                      </ul>
+                      <h1>Grade book</h1>
+                            <form id="user_form" method="post" action="/books/grading/{{id}}/"
+                                    enctype="multipart/form-data">
+
+                                                  {% csrf_token %}
+                                                  <div class="row grading">
+                                                    <div class="col-xs-12"><h3>How would you rate this book?</h3></div>
+
+                                                  <div class="col-xs-3"><label class="left_label">Terrible!</label></div>
+                                                 <div class="col-xs-6">  <input name="rating" type="range"    min="0"    max="100"    step="1"    data-buffer="50" /></div>
+                                                 <div class="col-xs-3"><label class="right_label">The best there is! </label></div>
+                                                 </div>
+
+
+                                                  <div class="row grading">
+                                                    <div class="col-xs-12"><h3>How whould you categorize this book?</h3></div>
+                                                  <div class="col-xs-3"><label class="left_label">Unpredictable</label></div>
+                                                 <div class="col-xs-6">  <input name="vsbh" type="range"    min="0"    max="100"    step="1"    data-buffer="50" /></div>
+                                                 <div class="col-xs-3"><label class="right_label">Predictable </label></div>
+                                               </div>
+                                               <div class="row grading">
+                                               <div class="col-xs-3"><label class="left_label">Unromantic</label></div>
+                                              <div class="col-xs-6">  <input name="roman" type="range"    min="0"    max="100"    step="1"    data-buffer="50" /></div>
+                                              <div class="col-xs-3"><label class="right_label">Romantic </label></div>
+                                            </div>
+                                            <div class="row grading">
+                                            <div class="col-xs-3"><label class="left_label">Negative</label></div>
+                                           <div class="col-xs-6">  <input name="pos" type="range"    min="0"    max="100"    step="1"    data-buffer="50" /></div>
+                                           <div class="col-xs-3"><label class="right_label">Positive </label></div>
+                                         </div>
+                                         <div class="row grading">
+                                         <div class="col-xs-3"><label class="left_label">Fantastic</label></div>
+                                        <div class="col-xs-6">  <input name="real" type="range"    min="0"    max="100"    step="1"    data-buffer="50" /></div>
+                                        <div class="col-xs-3"><label class="right_label">Realistic </label></div>
+                                      </div>
+                                      <div class="row grading">
+                                      <div class="col-xs-3"><label class="left_label">Action</label></div>
+                                     <div class="col-xs-6">  <input name="span" type="range"    min="0"    max="100"    step="1"    data-buffer="50" /></div>
+                                     <div class="col-xs-3"><label class="right_label">Pyschological </label></div>
+                                   </div>
+
+
+
+
+                                   <div class="row grading">
+                                     <div class="col-xs-12"><input type="submit" name="submit" value="Grade" /></div>
+
+
+                              </div>
+
+                            </form>
+
+                    </div>
+
+              </div>
+
+
+
+  </div></div>
+
+    {%endblock %}

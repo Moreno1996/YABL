@@ -1,0 +1,31 @@
+
+
+{% extends 'base.html'%}
+
+
+    {%block content%}
+    <div class="container">
+      <div>You searched for: {{ query }} </div>
+<br/><br/>
+<div class="row">
+       {%for single in Books%}
+  <div class="col-md-6"><h3>{{single.title}}-{{single.author}}</h3>
+  <p>{{single.decription}}</p>
+  <img src="{{single.image_link}}" height="200"></img>
+  <p>
+{{single.isbn}} <br/>
+{{single.date_added}}<br/>
+{{single.year}}<br/>
+{{single.rating}}
+
+</div>
+{% endfor%}
+
+</div>
+
+
+
+  </div>
+
+
+        {%endblock %}

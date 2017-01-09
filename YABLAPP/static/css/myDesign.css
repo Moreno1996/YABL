@@ -1,0 +1,30 @@
+/*
+$blue: #0D324D;
+$lightblue: rgba(0, 153, 191, 1);
+$darkblue: rgba(0, 33, 45, 1);
+$darktorquase: rgba(0, 79, 79, 1);
+*/
+
+body{
+  background-color:#ffffff!important  ;
+
+}
+
+h1,h2,h3,h4, b{
+  color: rgba(0, 33, 45, 1);
+}
+
+hr,.page-header{
+  border-color:rgba(0, 79, 79, 1);
+}
+a{
+  color: rgba(0, 153, 191, 1);
+}
+a.thumbnail:hover {
+    border-color: rgba(0, 33, 45, 1);
+}
+
+.book_info, .related{
+  padding:10px 0;
+  margin:10px 0;
+}

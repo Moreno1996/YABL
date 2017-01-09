@@ -24,8 +24,24 @@ router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.bookOverview, name='bookOverview'),
+    url(r'^search/$', views.search_new, name='search_new_page'),
+    url(r'^login/$', views.user_login, name='user_login'),
+    url(r'^logout/$', views.user_logout, name='user_logout '),
+    url(r'^$', views.index, name='index'),
+    url(r'^books/$', views.bookOverview, name='bookOverview'),
+    url(r'^books/single/(?P<pk>\d+)/$', views.singleBook, name='book_detail'),
+    url(r'^books/grading/(?P<pk>\d+)/$', views.grade_single, name='grade_single'),
+    url(r'^books/(?P<pk>\d+)/(?P<x>\d+)/$', views.add_book, name='add_book'),
+    url(r'^reader/favourites/$', views.favourite_view, name='favourite_view'),
+    url(r'^reader/rated/$', views.rated_view, name='rated_view'),
+    url(r'^reader/read/$', views.read_view, name='read_view'),
+    url(r'^reader/$', views.reader, name='reader'),
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^register/$', views.register, name='register'), # ADD NEW PATTERN!
+    url(r'^api/v1/books/$',             views.book_collection, name='book_collection'),
+    url(r'^api/v1/books/(?P<pk>\d+)/$', views.book_element,     name='book_element'),
+    url(r'^api/v1/reader/$',             views.reader_collection, name='reader_collection'),
+    url(r'^api/v1/reader/(?P<pk>\d+)/$', views.reader_element,     name='reader_element'),
 
 ]
